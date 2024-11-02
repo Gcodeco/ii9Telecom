@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist", // Especifica onde colocar os arquivos compilados
+    "sourceMap": true, // Gera arquivos de mapa de origem
+    "declaration": true // Gera arquivos .d.ts
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+

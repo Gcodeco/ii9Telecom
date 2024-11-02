@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header-top {
+    background-color: #003366; /* Cor azul para o cabeçalho */
+    color: white; /* Texto em branco */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px; /* Espaçamento */
+}
+
+.contact-info span, .social-info span {
+    margin-right: 20px; /* Espaçamento entre os elementos */
+}
+
+.social-info a {
+    color: white; /* Cor dos ícones em branco */
+    margin-left: 10px; /* Espaçamento entre os ícones */
+}
+
+nav {
+    background-color: #004080; /* Cor azul do menu */
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os itens do menu */
+}
+
+nav ul li {
+    margin: 0 15px; /* Espaçamento entre os itens do menu */
+}
+
+nav ul li a {
+    color: white; /* Cor do texto do menu em branco */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f4f4f9; /* Muda a cor ao passar o mouse */
+}
+
+.header-bottom {
+    text-align: center; /* Centraliza o logo */
+    margin: 20px 0; /* Espaçamento acima e abaixo */
+}
+
+.logo {
+    height: 50px; /* Ajuste a altura do logo conforme necessário */
+    margin-right: 20px; /* Espaçamento entre o logo e o menu */
+}
+
+section {
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f4f4f9; /* Cor de fundo do rodapé */
+}
+

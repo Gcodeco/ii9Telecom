@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ii9Telecom Relatorio</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    #exportBtn {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #exportBtn:hover {
+      background-color: #45a049;
+    }
+
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>ii9Telecom</h1>
+  <h2>Dados de entrada Mês Junho</h2>
+
+  <!-- Botão para exportar o conteúdo para PDF -->
+  <button id="exportBtn">Exportar para PDF</button>
+
+  <!-- Tabela onde os dados serão exibidos -->
+  <table id="jsonDataTable">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Data</th>
+        <th>Valor</th>
+        <th>Total de entrada</th>
+      </tr>
+    </thead>
+    <tbody id="jsonData">
+      <!-- Os dados serão inseridos aqui -->
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><strong>Total</strong></td>
+        <td id="totalValor"></td>
+        <td id="totalEntrada"></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- Inclui o jsPDF via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Inclui o jsPDF AutoTable Plugin via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
+
+  <script>
+    // Requisição para obter os dados JSON do servidor
+    fetch('/api/entrada1')
+      .then(response => response.json())
+      .then(data => {
+        const jsonDataElement = document.getElementById('jsonData');
+        let html = '';
+        let totalValor = 0;
+
+        // Preenche a tabela com os dados JSON
+        data.forEach((item) => {
+          html += `
+            <tr>
+              <td>${item.Tipo}</td>
+              <td>${item.Data}</td>
+              <td>${item.Valor}</td>
+              <td></td>
+            </tr>
+          `;
+
+          // Somando os valores da coluna 'Valor' (removendo "R$" e tratando a vírgula)
+          totalValor += parseFloat(item.Valor.replace('R$', '').replace(',', '.'));
+        });
+
+        // Insere as linhas na tabela
+        jsonDataElement.innerHTML = html;
+
+        // Exibe o total de todos os valores da coluna 'Valor' na última linha
+        document.getElementById('totalValor').innerText = `R$ ${totalValor.toFixed(2)}`;
+        document.getElementById('totalEntrada').innerText = `R$ ${totalValor.toFixed(2)}`;
+      })
+      .catch(err => {
+        console.error('Erro ao carregar dados JSON:', err);
+        alert('Houve um erro ao carregar os dados. Tente novamente mais tarde.');
+      });
+
+    // Função para exportar a tabela para PDF usando jsPDF e autoTable
+    document.getElementById('exportBtn').addEventListener('click', function () {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      
+      // Adiciona o título
+      doc.setFontSize(16);
+      doc.text("ii9Telecom Dados de entrada Mês Junho", 20, 20);
+      
+      // Pega o conteúdo da tabela
+      const table = document.getElementById("jsonDataTable");
+      doc.autoTable({ html: table, startY: 30 });
+
+      // Salva o PDF
+      doc.save('tabela-entrada.pdf');
+    });
+  </script>
+</body>
+</html>

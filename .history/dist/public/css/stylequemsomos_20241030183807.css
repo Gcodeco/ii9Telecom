@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    position: relative; /* Para permitir que a marca d'água se posicione em relação ao body */
+    z-index: 1; /* Para garantir que o conteúdo fique acima */
+    background-image: url('/dist/public/img/Novo\ Projeto.png'); /* Substitua pelo caminho da sua logo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+    opacity: 0.1;
+    z-index: -10;
+}
+
+
+
+.container2 {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #007bff;
+}
+
+header h4 {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.about p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+ul {
+    margin-bottom: 20px;
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}

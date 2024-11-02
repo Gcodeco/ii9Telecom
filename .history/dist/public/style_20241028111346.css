@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+}
+
+h1 {
+    margin-right: auto; /* Mantém o título à esquerda */
+}
+
+nav {
+    flex-grow: 1; /* Permite que o nav ocupe o espaço restante */
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo do nav */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove margens padrão */
+    display: flex; /* Exibe os itens em linha */
+}
+
+nav ul li {
+    margin: 0 10px; /* Espaçamento entre os itens do menu */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s; /* Efeito de transição ao passar o mouse */
+}
+
+nav ul li a:hover {
+    color: #f4f4f9; /* Muda a cor ao passar o mouse */
+}
+
+section {
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f4f4f9;
+}

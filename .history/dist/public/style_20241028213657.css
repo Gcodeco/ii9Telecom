@@ -1,0 +1,367 @@
+@font-face {
+    font-family: 'Montzart';
+    src: url('/dist/public/fonts/montserrat/Montserrat-Medium.ttf') format('woff2'),
+         url('/dist/public/fonts/montserrat/Montserrat-ExtraBold.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.sandy-background {
+    background-color: gainsboro;
+    background-size: cover;
+    background-position: center;
+    padding: 20px 0;
+    height: auto;
+    margin: 0;
+}
+
+.header-top {
+    background-color: #003366;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+.contact-info span, .social-info span {
+    margin-right: 20px;
+}
+
+.social-info a {
+    color: white;
+    margin-left: 10px;
+}
+
+nav {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .logo {
+    height: 70px;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #003366;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f4f4f9;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0; /* Aumentar o espaçamento */
+    background-color: #003366; /* Cor de fundo do footer */
+    color: white; /* Cor do texto */
+    position: relative; /* Para posicionar a imagem dentro do footer */
+}
+
+footer img {
+    width: 100px; /* Ajustar o tamanho da imagem */
+    opacity: 0.7; /* Tornar a imagem um pouco mais opaca */
+    margin-top: 10px; /* Espaço acima da imagem */
+}
+
+.carousel {
+    position: relative;
+    max-width: 100%;
+    height: 760px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-image {
+    min-width: 100%;
+    height: 800px;
+    display: none;
+    object-fit: cover;
+}
+
+.carousel-image.active {
+    display: block;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.subscriber-button {
+    background-color: #003366;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: background-color 0.3s;
+}
+
+.subscriber-button:hover {
+    background-color: #002244;
+}
+
+.subscriber-button i {
+    margin-right: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin: 10px 0;
+    color: rgba(0, 51, 102, 0.8);
+    font-family: 'Montzart', sans-serif;
+}
+
+h1:first-of-type {
+    font-size: 15px;
+}
+
+h1:last-of-type {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#informacoes {
+    padding: 40px 20px;
+    min-height: 300px;
+    text-align: center;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    width: calc(18% - 10px); /* Ajuste a largura para 25% */
+    height: 400px; /* Aumente a altura */
+    perspective: 1000px;
+    margin: 5px;
+    
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s;
+    background-image: url('img/Fundo\ Azul\ Gradiente_\ Efeito\ de\ Luz\ Spot\ _\ Vetor\ Premium.jpg'); /* Caminho para sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a área */
+    background-position: center; /* Centraliza a imagem */
+     box-shadow: 0 20px 10px rgba(0, 0, 0, 0.1);
+     background-color: rgba(255, 255, 255, 0.8);
+     padding: 5px;
+   
+    
+    
+}
+
+.front {
+    background-color: white;
+    
+}
+
+.front .info-text {
+    z-index: 1;
+}
+
+.back {
+    background-color: #f4f4f9;
+    color: #003366;
+    transform: rotateY(180deg);
+}
+
+
+.info-box:hover .front {
+    transform: rotateY(180deg);
+}
+
+.info-box:hover .back {
+    transform: rotateY(0);
+}
+
+.price {
+    position: absolute;
+    bottom: -25px; /* Ajuste a posição da faixa */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Largura da faixa igual à do retângulo */
+    height: 30px; /* Altura da faixa */
+    background-color: #003366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 10px 10px; /* Bordas arredondadas na parte inferior */
+    font-size: 18px;
+    z-index: 1;
+}
+
+
+.info-button {
+    background-color: #28a745; /* Cor do cabeçalho */
+    color: white; /* Texto branco */
+    border: none; /* Remove bordas */
+    border-radius: 15px; /* Bordas arredondadas */
+    padding: 5px 10px; /* Ajuste o espaçamento interno do botão */
+    cursor: pointer; /* Mãozinha ao passar o mouse */
+    position: absolute; /* Posiciona o botão de forma absoluta */
+    top: 10px; /* Ajuste a distância do topo conforme necessário */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Centraliza perfeitamente */
+    transition: background-color 0.3s; /* Transição suave na cor */
+    display: flex; /* Usar flexbox para alinhar ícone e texto */
+    align-items: center; /* Alinha verticalmente */
+}
+
+.info-text {
+    display: flex; /* Usar flexbox para alinhar elementos */
+    flex-direction: column; /* Organiza o texto em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: flex-start; /* Centraliza verticalmente */
+    height: calc(100% - 50px); /* Altura ajustada para dar espaço ao botão */
+    margin-top: 70px; /* Espaço acima do texto */
+    padding-top: 10px; /* Espaço interno opcional para um leve afastamento */
+    
+}
+
+.info-text h3 {
+    font-size: 48px; /* Tamanho da fonte para o número */
+    margin: 0; /* Remove margens padrão */
+    color: #ffffff; /* Cor do texto */
+    font-weight: 900; /* Negrito para destaque */
+}
+.info-text h3, .info-text p {
+    text-shadow: 1px 1px 2px rgba(106, 227, 248, 0.5); /* Sombra do texto */
+}
+
+.info-text p {
+    font-size: 32px; /* Tamanho da fonte para "MEGA" */
+    margin: 0; /* Margem superior e removendo a inferior */
+    color: #003366; /* Cor cinza para o texto "MEGA" */
+    font-weight: 700; /* Peso normal para o texto */
+}
+
+.info-button i {
+    margin-right: 5px; /* Espaço entre o ícone e o texto */
+    color: white;
+}
+
+.info-button:hover {
+    background-color: #218838; /* Cor mais escura ao passar o mouse */
+}
+
+
+.info-button, .subscribe-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subscribe-button {
+    background-color: #003366; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    margin-top: 10px; /* Espaço acima do botão */
+    padding: 15px 30px; /* Aumenta o espaçamento interno para deixar o botão maior */
+    border: 3px solid white; /* Borda branca de 3px */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    cursor: pointer; /* Mãozinha ao passar o mouse */
+    transition: background-color 0.3s, transform 0.3s; /* Transição suave para fundo e transformação */
+}
+
+.subscribe-button:hover {
+    background-color: #002244; /* Cor mais escura ao passar o mouse */
+    transform: scale(1.05); /* Aumenta um pouco o tamanho ao passar o mouse */
+}
+
+
+.info-preco {
+    position: relative; /* Permite ajustar a posição */
+    top: -30px; /* Ajuste para cima conforme necessário */
+    background-color: #003366; /* Fundo para contraste */
+    color: white; /* Texto branco */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    text-align: center; /* Centraliza o texto */
+    margin-top: 10px; /* Espaço acima do preço */
+    
+}
+
+
+.info-preco h1 {
+    font-size: 12px; /* Tamanho do texto "por apenas:" */
+    margin: 0; /* Remove margens padrão */
+    color: white; /* Cor do texto */
+}
+
+
+.info-preco h3 {
+    font-size: 12px; /* Tamanho do texto "por apenas:" */
+    margin: 0; /* Remove margens padrão */
+    color: white; /* Cor do texto */
+}
+
+.info-preco p {
+    font-size: 50px; /* Aumenta o tamanho do preço */
+    font-weight: bold; /* Destaca o preço */
+    margin: 5px 0 0; /* Margens ajustadas para espaçamento */
+    color: #28a745; /* Cor igual ao info-button */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* Sombra do texto */
+}
+

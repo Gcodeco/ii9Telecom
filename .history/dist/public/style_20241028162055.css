@@ -1,0 +1,248 @@
+@font-face {
+    font-family: 'Montzart';
+    src: url('/dist/public/fonts/montserrat/Montserrat-Medium.ttf') format('woff2'), /* Ajuste o caminho conforme necessário */
+         url('/dist/public/fonts/montserrat/Montserrat-ExtraBold.ttf') format('woff'); /* Adicione outros formatos, se necessário */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9; /* Cor de fundo geral da página */
+}
+
+.sandy-background {
+    background-image: url('img/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a área */
+    background-position: center; /* Centraliza a imagem */
+    padding: 20px 0; /* Espaçamento interno */
+    height: auto; /* Ajuste conforme necessário */
+    margin: 0;
+}
+
+.header-top {
+    background-color: #003366; /* Cor azul para o cabeçalho */
+    color: white; /* Texto em branco */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px; /* Espaçamento */
+}
+
+.contact-info span, .social-info span {
+    margin-right: 20px; /* Espaçamento entre os elementos */
+}
+
+.social-info a {
+    color: white; /* Cor dos ícones em branco */
+    margin-left: 10px; /* Espaçamento entre os ícones */
+}
+
+nav {
+    background-color: white; /* Cor do menu */
+    padding: 10px 20px;
+    display: flex; /* Flexbox para o menu e logo */
+    align-items: center; /* Alinha itens verticalmente */
+    justify-content: space-between; /* Distribui espaço entre os itens */
+}
+
+nav .logo {
+    height: 70px; /* Ajuste a altura do logo conforme necessário */
+    margin-right: 20px; /* Espaço entre o logo e o menu */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Mantém os itens do menu em linha */
+}
+
+nav ul li {
+    margin: 0 15px; /* Espaçamento entre os itens do menu */
+}
+
+nav ul li a {
+    color: #003366; /* Cor do texto do menu */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f4f4f9; /* Muda a cor ao passar o mouse */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f4f4f9; /* Cor de fundo do rodapé */
+}
+
+.carousel {
+    position: relative;
+    max-width: 100%;
+    height: 800px; /* Altura ajustada para 800 pixels */
+    margin: 0 auto 40px; /* Centraliza o carrossel */
+    overflow: hidden; /* Oculta as imagens que estão fora do container */
+}
+
+.carousel-images {
+    display: flex; /* Alinha as imagens em linha */
+    transition: transform 0.5s ease; /* Animação suave ao mover */
+}
+
+.carousel-image {
+    min-width: 100%; /* Cada imagem ocupa 100% do container */
+    height: 800px; /* Altura ajustada para 800 pixels */
+    display: none; /* Oculta todas as imagens por padrão */
+    object-fit: cover; /* Cobre a área mantendo a proporção */
+}
+
+.carousel-image.active {
+    display: block; /* Exibe a imagem ativa */
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.prev {
+    left: 10px; /* Botão "anterior" à esquerda */
+}
+
+.next {
+    right: 10px; /* Botão "próximo" à direita */
+}
+
+.subscriber-button {
+    background-color: #003366; /* Cor azul do cabeçalho */
+    color: white; /* Texto em branco */
+    padding: 10px 15px; /* Espaçamento interno */
+    border: none; /* Remove bordas */
+    border-radius: 5px; /* Bordas arredondadas */
+    display: flex; /* Flex para centralizar o ícone e o texto */
+    align-items: center; /* Alinha verticalmente */
+    text-decoration: none; /* Remove underline */
+    margin-left: 20px; /* Espaçamento entre o menu e o botão */
+    transition: background-color 0.3s; /* Animação de cor ao passar o mouse */
+}
+
+.subscriber-button:hover {
+    background-color: #002244; /* Cor mais escura ao passar o mouse */
+}
+
+.subscriber-button i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+
+h1 {
+    text-align: center; /* Centraliza o texto */
+    margin: 10px 0; /* Espaçamento acima e abaixo dos títulos */
+    color: rgba(0, 51, 102, 0.8); /* Cor azul com 80% de opacidade */
+    font-family: 'Montzart', sans-serif; /* Aplica a fonte Montzart */
+}
+
+h1:first-of-type {
+    font-size: 15px; /* Tamanho menor para o primeiro H1 */
+}
+
+h1:last-of-type {
+    font-size: 36px; /* Tamanho maior para o segundo H1 */
+    font-weight: bold; /* Destaca o segundo H1 */
+}
+
+#informacoes {
+    padding: 20px; /* Espaçamento em volta da seção */
+    text-align: center; /* Centraliza o título */
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between; /* Espaçamento entre os itens */
+    flex-wrap: wrap; /* Permite quebra de linha se necessário */
+}
+
+.info-box {
+    width: calc(20% - 10px); /* Ajuste a largura conforme necessário */
+    height: 150px; /* Altura do retângulo (aumentei para acomodar o texto) */
+    perspective: 1000px; /* Para criar um efeito 3D */
+    margin: 5px;
+    position: relative; /* Necessário para posicionar a faixa */
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* Oculta o lado de trás quando não está virado */
+    border-radius: 10px; /* Bordas arredondadas */
+    display: flex;
+    flex-direction: column; /* Alinha os elementos na vertical */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    transition: transform 0.6s; /* Animação suave */
+}
+
+.front {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* Oculta o lado de trás quando não está virado */
+    border-radius: 10px 10px 0 0; /* Bordas arredondadas na parte superior */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s; /* Animação suave */
+    background-color: #00adef; /* Cor de fundo */
+}
+
+.front .info-text {
+    z-index: 1; /* Garante que o texto fique acima da faixa */
+}
+
+.back {
+    background-color: #f4f4f9; /* Cor de fundo do botão de assinatura */
+    color: #003366;
+    transform: rotateY(180deg); /* Rotaciona para trás */
+}
+
+.info-box:hover .front {
+    transform: rotateY(180deg); /* Vira o elemento */
+}
+
+.info-box:hover .back {
+    transform: rotateY(0); /* Mostra o lado de trás */
+}
+.info-box:after {
+    content: '';
+    position: absolute;
+    bottom: 5px; /* Ajuste a posição da faixa */
+    left: 0;
+    width: 100%;
+    height: 20px; /* Altura da faixa */
+    background-color:#003366 ; /* Cor da faixa, ajuste conforme necessário */
+    border-radius: 0 0 10px 10px; /* Bordas arredondadas na parte inferior */
+}
+
+.info-button, .subscribe-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subscribe-button {
+    background-color: #003366; /* Cor do botão de assinatura */
+    color: white;
+    margin-top: 10px; /* Espaço acima do botão */
+}

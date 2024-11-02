@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ii9Telecom</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Para os ícones -->
+</head>
+<body>
+    <header class="header-top">
+        <div class="contact-info">
+            <span><i class="fas fa-phone"></i> (XX) XXXXX-XXXX</span>
+            <span><i class="fab fa-whatsapp"></i> (XX) XXXXX-XXXX</span>
+        </div>
+        <div class="social-info">
+            <span><i class="fas fa-map-marker-alt"></i> Japeri - Engenheiro Pedreira, RJ</span>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+
+    <nav>
+        <img src="img/Novo Projeto.png" alt="ii9Telecom" class="logo">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobrenos.html">Sobre Nós</a></li>
+            <li><a href="planos.html">Planos</a></li>
+            <li><a href="suporte.html">Suporte</a></li>
+        </ul>
+    </nav>
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="img/" alt="Imagem 1" class="carousel-image active">
+            
+        </div>
+        <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Informações sobre a empresa.</p>
+    </section>
+
+    <section id="servicos">
+        <h2>Serviços</h2>
+        <p>Descrição dos serviços oferecidos.</p>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <form id="contatoForm">
+            <input type="text" placeholder="Seu nome" required>
+            <input type="email" placeholder="Seu email" required>
+            <textarea placeholder="Sua mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 ii9Telecom Fibra. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        let currentSlide = 0;
+    
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-image');
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+    
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+    
+        function moveSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+    
+        // Mudar automaticamente de slide a cada 5 segundos
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ii9Telecom Relatorio</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    #exportBtn {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #exportBtn:hover {
+     
+      background-color: #45a049;
+    }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>ii9Telecom</h1>
+  <h2>Dados de Saida Mês Junho</h2>
+
+  <!-- Botão para exportar o conteúdo para PDF -->
+  <button id="exportBtn">Exportar para PDF</button>
+
+  <!-- Tabela onde os dados serão exibidos -->
+  <table id="jsonDataTable">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Descrição</th>
+        <th>Data</th>
+        <th>Valor</th>
+        <th>Total de Saída</th>
+      </tr>
+    </thead>
+    <tbody id="jsonData">
+      <!-- Os dados serão inseridos aqui -->
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3"><strong>Total</strong></td>
+        <td id="totalValor"></td>
+        <td id="totalSaida"></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- Datalist com sugestões -->
+  <datalist id="descricaoSuggestions">
+    <option value="Tarifa">
+    <option value="Gasolina">
+    <option value="Pagamento de Salário">
+    <option value="Link">
+    <option value="Material">
+    <option value="Vale">
+    <option value="Paulinho Pessoal">
+    <option value="Almoço">
+    <option value="Mkfull">
+    <option value="Meta">
+  </datalist>
+
+  <!-- Inclui o jsPDF via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Inclui o jsPDF AutoTable Plugin via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
+
+  <script>
+    // Requisição para obter os dados JSON da nova rota de saída
+    fetch('/api/saida1')
+      .then(response => response.json())
+      .then(data => {
+        const jsonDataElement = document.getElementById('jsonData');
+        let html = '';
+        let totalValor = 0;
+        let totalSaida = 0;
+
+        // Preenche a tabela com os dados JSON
+        data.forEach((item) => {
+          html += `
+            <tr>
+              <td>${item.Tipo}</td>
+              <td>
+                <input type="text" 
+                       placeholder="Digite ou selecione a descrição" 
+                       list="descricaoSuggestions" 
+                       id="descricao-${item.Data}">
+              </td>
+              <td>${item.Data}</td>
+              <td>${item.Valor}</td>
+              <td></td>
+            </tr>
+          `;
+
+          // Somando os valores da coluna 'Valor' (removendo "R$" e tratando a vírgula)
+          totalValor += parseFloat(item.Valor.replace('R$', '').replace(',', '.'));
+        });
+
+        // Insere as linhas na tabela
+        jsonDataElement.innerHTML = html;
+
+        // Exibe o total de todos os valores da coluna 'Valor' na última linha
+        document.getElementById('totalValor').innerText = `R$ ${totalValor.toFixed(2)}`;
+
+        // Agora, calculamos o total de saídas para o mês
+        totalSaida = totalValor;
+        document.getElementById('totalSaida').innerText = `R$ ${totalSaida.toFixed(2)}`;
+      })
+      .catch(err => console.error('Erro ao carregar dados JSON de saída:', err));
+
+    // Função para exportar a tabela para PDF usando jsPDF e autoTable
+    document.getElementById('exportBtn').addEventListener('click', function () {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      
+      // Adiciona o título
+      doc.setFontSize(16);
+      doc.text("ii9Telecom Dados de Saída Mês Junho", 20, 20);
+
+      // Pega os dados da tabela e os valores inseridos nos campos de descrição
+      const rows = [];
+      const table = document.getElementById("jsonDataTable");
+      const rowsData = table.querySelectorAll("tbody tr");
+
+      let totalSaidaPDF = 0;  // Para armazenar o total de saídas
+
+      // Itera pelas linhas e captura os dados, incluindo a descrição inserida pelo usuário
+      rowsData.forEach((row) => {
+        const tipo = row.cells[0].innerText;
+        const descricao = row.querySelector('input').value;  // Captura a descrição inserida
+        const data = row.cells[2].innerText;
+        const valor = row.cells[3].innerText;
+
+        // Adiciona a linha com os dados e a descrição
+        rows.push([tipo, descricao, data, valor]);
+
+        // Soma o valor para o total de saída
+        totalSaidaPDF += parseFloat(valor.replace('R$', '').replace(',', '.'));
+      });
+
+      // Adiciona a tabela ao PDF
+      doc.autoTable({
+        head: [['Tipo', 'Descrição', 'Data', 'Valor', 'Total de Saída']],
+        body: rows,
+        startY: 30
+      });
+
+      // Adiciona o total de saída no final da tabela no PDF
+      const yPosition = doc.lastAutoTable.finalY + 10;
+      doc.text(`Total de Saída: R$ ${totalSaidaPDF.toFixed(2)}`, 20, yPosition);
+
+      // Salva o PDF
+      doc.save('tabela-saida.pdf');
+    });
+  </script>
+</body>
+</html>

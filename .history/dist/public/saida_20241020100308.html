@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saídas - ii9Telecom</title>
+    <style>
+        /* Corpo da página */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+
+        /* Botão de voltar */
+        .back-button {
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #001f33;
+        }
+
+        /* Estilos da lista de PDFs */
+        .pdf-list {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .pdf-list li {
+            margin: 10px 0;
+        }
+
+        .pdf-list a {
+            padding: 10px;
+            background-color: #003366;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .pdf-list a:hover {
+            background-color: #001f33;
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PDFs de Saída</h1>
+
+    <!-- Botão de voltar -->
+    <a href="/"><button class="back-button">Voltar para o Index</button></a>
+
+    <!-- Lista de PDFs de Saída -->
+    <ul id="pdfList" class="pdf-list"></ul>
+
+    <script>
+        // Função para carregar os arquivos PDF de saída
+        fetch('/api/pdfs/saida')
+            .then(response => response.json())
+            .then(pdfFiles => {
+                const pdfListElement = document.getElementById('pdfList');
+                
+                // Verifica se há arquivos
+                if (pdfFiles.length === 0) {
+                    pdfListElement.innerHTML = '<li>Não há arquivos PDF disponíveis.</li>';
+                    return;
+                }
+
+                // Cria uma lista de links para abrir os PDFs
+                pdfFiles.forEach(pdf => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.textContent = pdf;
+                    a.href = `/pdfs/saida/${pdf}`;  // Caminho para abrir o PDF
+                    a.target = '_blank';  // Abre o PDF em uma nova aba
+                    li.appendChild(a);
+                    pdfListElement.appendChild(li);
+                });
+            })
+            .catch(err => {
+                console.error('Erro ao carregar os arquivos PDF de saída:', err);
+            });
+    </script>
+
+</body>
+</html>

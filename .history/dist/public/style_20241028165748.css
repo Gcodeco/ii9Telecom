@@ -1,0 +1,269 @@
+@font-face {
+    font-family: 'Montzart';
+    src: url('/dist/public/fonts/montserrat/Montserrat-Medium.ttf') format('woff2'),
+         url('/dist/public/fonts/montserrat/Montserrat-ExtraBold.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.sandy-background {
+    background-image: url('img/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px 0;
+    height: auto;
+    margin: 0;
+}
+
+.header-top {
+    background-color: #003366;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+.contact-info span, .social-info span {
+    margin-right: 20px;
+}
+
+.social-info a {
+    color: white;
+    margin-left: 10px;
+}
+
+nav {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .logo {
+    height: 70px;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #003366;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f4f4f9;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f4f4f9;
+}
+
+.carousel {
+    position: relative;
+    max-width: 100%;
+    height: 800px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-image {
+    min-width: 100%;
+    height: 800px;
+    display: none;
+    object-fit: cover;
+}
+
+.carousel-image.active {
+    display: block;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.subscriber-button {
+    background-color: #003366;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: background-color 0.3s;
+}
+
+.subscriber-button:hover {
+    background-color: #002244;
+}
+
+.subscriber-button i {
+    margin-right: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin: 10px 0;
+    color: rgba(0, 51, 102, 0.8);
+    font-family: 'Montzart', sans-serif;
+}
+
+h1:first-of-type {
+    font-size: 15px;
+}
+
+h1:last-of-type {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#informacoes {
+    padding: 40px 20px;
+    min-height: 300px;
+    text-align: center;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    width: calc(18% - 10px); /* Ajuste a largura para 25% */
+    height: 400px; /* Aumente a altura */
+    perspective: 1000px;
+    margin: 5px;
+    
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s;
+}
+
+.front {
+    background-color: white;
+}
+
+.front .info-text {
+    z-index: 1;
+}
+
+.back {
+    background-color: #f4f4f9;
+    color: #003366;
+    transform: rotateY(180deg);
+}
+
+.info-box:hover .front {
+    transform: rotateY(180deg);
+}
+
+.info-box:hover .back {
+    transform: rotateY(0);
+}
+
+.price {
+    position: absolute;
+    bottom: -25px; /* Ajuste a posição da faixa */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Largura da faixa igual à do retângulo */
+    height: 30px; /* Altura da faixa */
+    background-color: #003366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 10px 10px; /* Bordas arredondadas na parte inferior */
+    font-size: 18px;
+    z-index: 1;
+}
+
+
+.info-button {
+    background-color: #003366; /* Cor do cabeçalho */
+    color: white; /* Texto branco */
+    border: none; /* Remove bordas */
+    border-radius: 15px; /* Bordas arredondadas */
+    padding: 10px 15px; /* Espaçamento interno */
+    cursor: pointer; /* Mãozinha ao passar o mouse */
+    margin-bottom: 10px; /* Espaço abaixo do botão */
+    transition: background-color 0.3s; /* Transição suave na cor */
+    display: flex; /* Usar flexbox para alinhar ícone e texto */
+    align-items: center; /* Alinha verticalmente */
+}
+
+.info-button i {
+    margin-right: 5px; /* Espaço entre o ícone e o texto */
+}
+
+.info-button:hover {
+    background-color: #002244; /* Cor mais escura ao passar o mouse */
+}
+
+
+.info-button, .subscribe-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subscribe-button {
+    background-color: #003366;
+    color: white;
+    margin-top: 10px;
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ii9Telecom</title>
+    <link rel="icon" href="img/fave.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Para os ícones -->
+</head>
+<body>
+    <header class="header-top">
+        <div class="contact-info">
+            <span><i class="fas fa-phone"></i> (21) 2018-1757</span>
+            <span><i class="fab fa-whatsapp"></i> (21) 98674-6725</span>
+        </div>
+        <div class="social-info">
+            <span><i class="fas fa-map-marker-alt"></i> Japeri - Engenheiro Pedreira, RJ</span>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+
+    <nav>
+        <img src="img/Novo Projeto.png" alt="ii9Telecom" class="logo">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobrenos.html">Sobre Nós</a></li>
+            <li><a href="#planos">Planos</a></li>
+            <li><a href="suporte.html">Suporte</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        <a href="https://ii9telecom.atlaz.com.br/central" class="subscriber-button">
+            <i class="fas fa-user-circle"></i> Central do Assinante
+        </a>
+    </nav>
+
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="img/6158252 (2).png" alt="Imagem 1" class="carousel-image active">
+        </div>
+        <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <div class="sandy-background">
+        <section id="planos">
+            <h1>// PLANOS DE INTERNET</h1>
+            <h1>CONHEÇA NOSSOS PLANOS</h1>
+        </section>
+
+        <section id="informacoes">
+            <div class="info-container">
+                <div class="info-box">
+                    <div class="front">
+                        <button class="info-button">
+                            <i class="fa fa-globe" aria-hidden="true"></i> Internet
+                        </button>
+                        <div class="info-text">
+                            <h3>60</h3>
+                            <p>MEGA</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <button class="subscribe-button">Assinar</button>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="front">
+                        <button class="info-button">
+                            <i class="fas fa-globe"></i> Internet
+                        </button>
+                        <div class="info-text">
+                            <h3>100</h3>
+                            <p>MEGA</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <button class="subscribe-button">Assinar</button>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="front">
+                        <button class="info-button">
+                            <i class="fas fa-globe"></i> Internet
+                        </button>
+                        <div class="info-text">
+                            <h3>200</h3>
+                            <p>MEGA</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <button class="subscribe-button">Assinar</button>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="front">
+                        <button class="info-button">
+                            <i class="fas fa-globe"></i> Internet
+                        </button>
+                        <div class="info-text">
+                            <h3>300</h3>
+                            <p>MEGA</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <button class="subscribe-button">Assinar</button>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="front">
+                        <button class="info-button">
+                            <i class="fas fa-globe"></i> Internet
+                        </button>
+                        <div class="info-text">
+                            <h3>500</h3>
+                            <p>MEGA</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <button class="subscribe-button">Assinar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+    </div>
+
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Informações sobre a empresa.</p>
+    </section>
+
+    <section id="servicos">
+        <h2>Serviços</h2>
+        <p>Descrição dos serviços oferecidos.</p>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <form id="contatoForm">
+            <input type="text" placeholder="Seu nome" required>
+            <input type="email" placeholder="Seu email" required>
+            <textarea placeholder="Sua mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 ii9Telecom Fibra. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-image');
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function moveSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // Mudar automaticamente de slide a cada 5 segundos
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>
